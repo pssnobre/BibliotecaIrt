@@ -14,7 +14,7 @@
         @Html.HiddenFor(model => model.idLivro, new { @style = "dislplay:none;" })
         <div class="col-md-3">
             <label>ISBN:</label>
-            @Html.TextBoxFor(model => model.isbnLivro, new { @class = "form-control", @type = "text", @maxlength = "4", @required = "required" })
+            @Html.TextBoxFor(model => model.isbnLivro, new { @class = "form-control", @type = "text", @maxlength = "4", @minlength = "4", @required = "required" })
         </div>
         <div class="col-md-3">
             <label>Nome do Livro:</label>

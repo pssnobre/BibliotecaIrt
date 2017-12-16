@@ -56,14 +56,15 @@ namespace BibliotecaIrt.Models
             reservaObj.res_dt_entrega = Convert.ToDateTime(obj.dataEntrega);
 
 
-            if (db.reserva.Any(x => x.res_id_livro == obj.idLivro))
-            {
-                throw new Exception("Este livro já foi reservado.");
-            }
-            if (Convert.ToDateTime(obj.dataEntrega) <= DateTime.Now)
+            if (Convert.ToDateTime(obj.dataEntrega).Date <= DateTime.Now.Date)
             {
                 throw new Exception("A data da entrega deve maior do que a data de hoje.");
             }
+            if (db.reserva.Any(x => x.res_id_livro == obj.idLivro))
+            {
+                throw new Exception("Este livro ja foi reservado.");
+            }
+
 
             if (reservaObj.res_id_reserva > 0)
             {

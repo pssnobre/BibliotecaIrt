@@ -44,7 +44,7 @@ namespace BibliotecaIrt.Controllers
             }
             catch (Exception ex)
             {
-                return Editar(obj.idReserva, ex.Message);
+                return Editar(obj.idReserva, ex.Message, true);
             }
         }
 
