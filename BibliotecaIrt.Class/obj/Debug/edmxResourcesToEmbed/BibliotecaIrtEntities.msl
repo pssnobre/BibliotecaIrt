@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="irt_bibModelStoreContainer" CdmEntityContainer="irt_bibEntities">
+    <EntitySetMapping Name="livro">
+      <EntityTypeMapping TypeName="irt_bibModel.livro">
+        <MappingFragment StoreEntitySet="livro">
+          <ScalarProperty Name="liv_dt_publicacao" ColumnName="liv_dt_publicacao" />
+          <ScalarProperty Name="liv_ds_autor" ColumnName="liv_ds_autor" />
+          <ScalarProperty Name="liv_ds_nome" ColumnName="liv_ds_nome" />
+          <ScalarProperty Name="liv_ds_isbn" ColumnName="liv_ds_isbn" />
+          <ScalarProperty Name="liv_id_livro" ColumnName="liv_id_livro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="reserva">
+      <EntityTypeMapping TypeName="irt_bibModel.reserva">
+        <MappingFragment StoreEntitySet="reserva">
+          <ScalarProperty Name="res_dt_entrega" ColumnName="res_dt_entrega" />
+          <ScalarProperty Name="res_ds_usuario" ColumnName="res_ds_usuario" />
+          <ScalarProperty Name="res_id_livro" ColumnName="res_id_livro" />
+          <ScalarProperty Name="res_id_reserva" ColumnName="res_id_reserva" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

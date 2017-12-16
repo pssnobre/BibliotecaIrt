@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="irt_bibModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="livro">
+          <Key>
+            <PropertyRef Name="liv_id_livro" />
+          </Key>
+          <Property Name="liv_id_livro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="liv_ds_isbn" Type="varchar" MaxLength="4" />
+          <Property Name="liv_ds_nome" Type="varchar" MaxLength="30" />
+          <Property Name="liv_ds_autor" Type="varchar" MaxLength="30" />
+          <Property Name="liv_dt_publicacao" Type="date" />
+        </EntityType>
+        <EntityType Name="reserva">
+          <Key>
+            <PropertyRef Name="res_id_reserva" />
+          </Key>
+          <Property Name="res_id_reserva" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="res_id_livro" Type="int" Nullable="false" />
+          <Property Name="res_ds_usuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="res_dt_entrega" Type="date" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_COD_LIV">
+          <End Role="livro" Type="Self.livro" Multiplicity="1" />
+          <End Role="reserva" Type="Self.reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="livro">
+              <PropertyRef Name="liv_id_livro" />
+            </Principal>
+            <Dependent Role="reserva">
+              <PropertyRef Name="res_id_livro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="irt_bibModelStoreContainer">
+          <EntitySet Name="livro" EntityType="Self.livro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="reserva" EntityType="Self.reserva" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_COD_LIV" Association="Self.FK_COD_LIV">
+            <End Role="livro" EntitySet="livro" />
+            <End Role="reserva" EntitySet="reserva" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="irt_bibModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="irt_bibEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="livro" EntityType="irt_bibModel.livro" />
+          <EntitySet Name="reserva" EntityType="irt_bibModel.reserva" />
+          <AssociationSet Name="FK_COD_LIV" Association="irt_bibModel.FK_COD_LIV">
+            <End Role="livro" EntitySet="livro" />
+            <End Role="reserva" EntitySet="reserva" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="livro">
+          <Key>
+            <PropertyRef Name="liv_id_livro" />
+          </Key>
+          <Property Name="liv_id_livro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="liv_ds_isbn" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="liv_ds_nome" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="liv_ds_autor" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="liv_dt_publicacao" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="reserva" Relationship="irt_bibModel.FK_COD_LIV" FromRole="livro" ToRole="reserva" />
+        </EntityType>
+        <EntityType Name="reserva">
+          <Key>
+            <PropertyRef Name="res_id_reserva" />
+          </Key>
+          <Property Name="res_id_reserva" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="res_id_livro" Type="Int32" Nullable="false" />
+          <Property Name="res_ds_usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="res_dt_entrega" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="livro" Relationship="irt_bibModel.FK_COD_LIV" FromRole="reserva" ToRole="livro" />
+        </EntityType>
+        <Association Name="FK_COD_LIV">
+          <End Type="irt_bibModel.livro" Role="livro" Multiplicity="1" />
+          <End Type="irt_bibModel.reserva" Role="reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="livro">
+              <PropertyRef Name="liv_id_livro" />
+            </Principal>
+            <Dependent Role="reserva">
+              <PropertyRef Name="res_id_livro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="irt_bibModelStoreContainer" CdmEntityContainer="irt_bibEntities" >
+          <EntitySetMapping Name="livro">
+            <EntityTypeMapping TypeName="irt_bibModel.livro">
+              <MappingFragment StoreEntitySet="livro">
+                <ScalarProperty Name="liv_dt_publicacao" ColumnName="liv_dt_publicacao" />
+                <ScalarProperty Name="liv_ds_autor" ColumnName="liv_ds_autor" />
+                <ScalarProperty Name="liv_ds_nome" ColumnName="liv_ds_nome" />
+                <ScalarProperty Name="liv_ds_isbn" ColumnName="liv_ds_isbn" />
+                <ScalarProperty Name="liv_id_livro" ColumnName="liv_id_livro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reserva">
+            <EntityTypeMapping TypeName="irt_bibModel.reserva">
+              <MappingFragment StoreEntitySet="reserva">
+                <ScalarProperty Name="res_dt_entrega" ColumnName="res_dt_entrega" />
+                <ScalarProperty Name="res_ds_usuario" ColumnName="res_ds_usuario" />
+                <ScalarProperty Name="res_id_livro" ColumnName="res_id_livro" />
+                <ScalarProperty Name="res_id_reserva" ColumnName="res_id_reserva" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

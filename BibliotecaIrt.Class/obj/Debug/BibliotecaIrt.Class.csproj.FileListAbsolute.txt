@@ -1,0 +1,10 @@
+c:\users\paulo.nobre.topos\documents\visual studio 2015\Projects\BibliotecaIrt\BibliotecaIrt.Class\bin\Debug\BibliotecaIrt.Class.dll.config
+c:\users\paulo.nobre.topos\documents\visual studio 2015\Projects\BibliotecaIrt\BibliotecaIrt.Class\bin\Debug\BibliotecaIrt.Class.dll
+c:\users\paulo.nobre.topos\documents\visual studio 2015\Projects\BibliotecaIrt\BibliotecaIrt.Class\bin\Debug\BibliotecaIrt.Class.pdb
+c:\users\paulo.nobre.topos\documents\visual studio 2015\Projects\BibliotecaIrt\BibliotecaIrt.Class\bin\Debug\EntityFramework.dll
+c:\users\paulo.nobre.topos\documents\visual studio 2015\Projects\BibliotecaIrt\BibliotecaIrt.Class\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\paulo.nobre.topos\documents\visual studio 2015\Projects\BibliotecaIrt\BibliotecaIrt.Class\bin\Debug\EntityFramework.xml
+c:\users\paulo.nobre.topos\documents\visual studio 2015\Projects\BibliotecaIrt\BibliotecaIrt.Class\bin\Debug\EntityFramework.SqlServer.xml
+c:\users\paulo.nobre.topos\documents\visual studio 2015\Projects\BibliotecaIrt\BibliotecaIrt.Class\obj\Debug\BibliotecaIrt.Class.csprojResolveAssemblyReference.cache
+c:\users\paulo.nobre.topos\documents\visual studio 2015\Projects\BibliotecaIrt\BibliotecaIrt.Class\obj\Debug\BibliotecaIrt.Class.dll
+c:\users\paulo.nobre.topos\documents\visual studio 2015\Projects\BibliotecaIrt\BibliotecaIrt.Class\obj\Debug\BibliotecaIrt.Class.pdb

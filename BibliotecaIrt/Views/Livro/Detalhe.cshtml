@@ -1,0 +1,58 @@
+﻿@model BibliotecaIrt.Models.LivroModel
+
+@{
+    ViewBag.Title = "Detalhe";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Salvar", "Livro"))
+{
+
+    <h2>Livro</h2>
+
+    <div class="row">
+        @Html.HiddenFor(model => model.idLivro, new { @style = "dislplay:none;" })
+        <div class="col-md-3">
+            <label>ISBN:</label>
+            @Html.TextBoxFor(model => model.isbnLivro, new { @class = "form-control", @type = "text", @maxlength = "4", @required = "required" })
+        </div>
+        <div class="col-md-3">
+            <label>Nome do Livro:</label>
+            @Html.TextBoxFor(model => model.nomeLivro, new { @class = "form-control", @maxlength = "30", @required = "required" })
+        </div>
+        <div class="col-md-3">
+            <label>Nome do Autor:</label>
+            @Html.TextBoxFor(model => model.nomeAutor, new { @class = "form-control", @maxlength = "30", @required = "required" })
+        </div>
+        <div class="col-md-3">
+            <label>Data da Publicação:</label>
+            @Html.TextBoxFor(model => model.dataPublicacao, new { @class = "form-control datepicker-here", @maxlength = "10", @required = "required" })
+        </div>
+    </div>
+
+    <div class="row pull-left">
+        <div class="col-md-3">
+            <button class="btn-success btnSalvar" type="submit">Salvar</button>
+        </div>
+        <div class="col-md-3" style="padding-left: 40px">
+            @Html.ActionLink("Voltar", "Index")
+        </div>
+    </div>
+
+}
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.datepicker-here').attr('data-language', 'pt-BR');
+
+        var msg = '@ViewBag.Msg';
+        if (msg != '') {
+            alert(msg);
+        }
+    });
+</script>
+

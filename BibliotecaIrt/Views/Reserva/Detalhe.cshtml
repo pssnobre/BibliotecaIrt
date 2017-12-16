@@ -1,0 +1,70 @@
+﻿@model BibliotecaIrt.Models.ReservaModel
+
+@{
+    ViewBag.Title = "Detalhe";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Salvar", "Reserva"))
+{
+
+    <h2>Reserva</h2>
+
+    <div class="row">
+        @Html.HiddenFor(model => model.idReserva, new { @style = "dislplay:none;" })
+        <div class="col-md-4">
+            <label>Nome do livro:</label>
+            @*@Html.TextBoxFor(model => model.nomeLivro, new { @class = "form-control txbNomeLivro", @maxlenth = "30", @required = "required" })*@
+            @Html.DropDownListFor(model => model.idLivro, (SelectList)ViewBag.Livros, "Selecione...", new { @required = "required", @class = "form-control ddlLivro" })
+        </div>
+        <div class="col-md-4">            
+            <label>Nome do usuário:</label>
+            @Html.TextBoxFor(model => model.nomeUsuario, new { @class = "form-control txbNomeUsuario", @maxlength = "30", @required = "required" })
+        </div>
+        <div class="col-md-4">
+            <label>Data da entrega:</label>
+            @Html.TextBoxFor(model => model.dataEntrega, new { @class = "form-control datepicker-here txbDataEntrega", @maxlength = "10", @required = "required" })
+        </div>
+    </div>
+
+    <div class="row pull-left">
+        <div class="col-md-3">
+            <button class="btn-success btnSalvar" type="submit">Salvar</button>
+        </div>
+        <div class="col-md-3" style="padding-left: 40px">
+            @Html.ActionLink("Voltar", "Index")
+        </div>
+    </div>
+
+}
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var msg = '@ViewBag.Msg';
+        var permissaoEditar = '@ViewBag.PermissaoEditar';
+
+        if (permissaoEditar == 'False') {
+            $('.ddlLivro').attr('disabled', 'disabled');
+            $('.txbNomeUsuario').attr('disabled', 'disabled');
+            $('.txbDataEntrega').attr('disabled', 'disabled');
+            $('.btnSalvar').attr('disabled', 'disabled');
+        }
+        else {
+            $('.ddlLivro').removeAttr('disabled');
+            $('.txbNomeUsuario').removeAttr('disabled');
+            $('.txbDataEntrega').removeAttr('disabled');
+            $('.btnSalvar').removeAttr('disabled');
+        }
+
+
+        if (msg != '') {
+            alert(msg);
+        }
+
+        $('.datepicker-here').attr('data-language', 'pt-BR');
+    });
+</script>

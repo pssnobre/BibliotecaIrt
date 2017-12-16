@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f16073b1d03242dba32ac486692ee28c" Name="Diagram1" >
+        <EntityTypeShape EntityType="irt_bibModel.livro" Width="1.5" PointX="0.75" PointY="0.875" />
+        <EntityTypeShape EntityType="irt_bibModel.reserva" Width="1.5" PointX="3" PointY="1" />
+        <AssociationConnector Association="irt_bibModel.FK_COD_LIV" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

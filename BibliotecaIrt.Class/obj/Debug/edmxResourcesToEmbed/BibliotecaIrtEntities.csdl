@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="irt_bibModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="irt_bibEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="livro" EntityType="irt_bibModel.livro" />
+    <EntitySet Name="reserva" EntityType="irt_bibModel.reserva" />
+    <AssociationSet Name="FK_COD_LIV" Association="irt_bibModel.FK_COD_LIV">
+      <End Role="livro" EntitySet="livro" />
+      <End Role="reserva" EntitySet="reserva" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="livro">
+    <Key>
+      <PropertyRef Name="liv_id_livro" />
+    </Key>
+    <Property Name="liv_id_livro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="liv_ds_isbn" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="liv_ds_nome" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="liv_ds_autor" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="liv_dt_publicacao" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="reserva" Relationship="irt_bibModel.FK_COD_LIV" FromRole="livro" ToRole="reserva" />
+  </EntityType>
+  <EntityType Name="reserva">
+    <Key>
+      <PropertyRef Name="res_id_reserva" />
+    </Key>
+    <Property Name="res_id_reserva" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="res_id_livro" Type="Int32" Nullable="false" />
+    <Property Name="res_ds_usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="res_dt_entrega" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="livro" Relationship="irt_bibModel.FK_COD_LIV" FromRole="reserva" ToRole="livro" />
+  </EntityType>
+  <Association Name="FK_COD_LIV">
+    <End Type="irt_bibModel.livro" Role="livro" Multiplicity="1" />
+    <End Type="irt_bibModel.reserva" Role="reserva" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="livro">
+        <PropertyRef Name="liv_id_livro" />
+      </Principal>
+      <Dependent Role="reserva">
+        <PropertyRef Name="res_id_livro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

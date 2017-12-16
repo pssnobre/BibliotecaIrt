@@ -1,0 +1,71 @@
+﻿@model BibliotecaIrt.Models.ReservaModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Reservas</h2>
+
+
+<div class="row">
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>
+                    Nome do Livro
+                </th>
+                <th>
+                    Nome do Usuáro
+                </th>
+                <th>
+                    Data de Entrega
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.listaReservas)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nomeLivro)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nomeUsuario)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.dataEntrega)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Visualizar", "Editar", new { id = item.idReserva })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @if (Model.listaReservas.Count == 0)
+    {
+        <label>Nenhum registro encontrado.</label>
+    }
+</div>
+
+<div class="row">
+    <div class="col-md-3 pull-left">
+        @Html.ActionLink("Nova Reserva", "Novo")
+    </div>
+</div>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var msg = '@ViewBag.Msg';
+        if (msg != '') {
+            alert(msg);
+        }
+    });
+</script>
+
