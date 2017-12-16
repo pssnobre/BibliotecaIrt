@@ -58,6 +58,16 @@ namespace BibliotecaIrt.Models
             livroObj.liv_ds_autor = obj.nomeAutor;
             livroObj.liv_dt_publicacao = Convert.ToDateTime(obj.dataPublicacao);
 
+            if (db.livro.Any(x => x.liv_ds_isbn == obj.isbnLivro))
+            {
+                throw new Exception("Ja existe um livro com esse ISBN.");
+            }
+            if (Convert.ToDateTime(obj.dataPublicacao) > DateTime.Now)
+            {
+                throw new Exception("A data da publicaçao deve ser menor ou igual a data de hoje.");
+            }
+
+
             if (livroObj.liv_id_livro > 0)
             {
                 db.livro.Attach(livroObj);
